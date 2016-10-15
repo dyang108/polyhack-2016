@@ -10,6 +10,7 @@
     }
   </style>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
   <script>
     // include angular loader, which allows the files to load in any order
     //@@NG_LOADER_START@@
@@ -42,9 +43,13 @@
     });
   </script>
   <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="app.css">
 </head>
 <body ng-cloak>
+<div class="container">
+<button class="btn btn-primary">hello</button>
+</div>
   <ul class="menu">
     <li><a href="#!/view1">view1</a></li>
     <li><a href="#!/view2">view2</a></li>
