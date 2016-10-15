@@ -7,21 +7,12 @@ angular.module('myApp', [
         'myApp.version',
         'uiGmapgoogle-maps'
     ])
-    .config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
-      GoogleMapApi.configure({
-        key: 'AIzaSyBI2B2hZzmW7_NcuQww8GzopJyQrddOBHs',
-        libraries: 'weather, geometry, visualization'
-      })
+    .config(['uiGmapGoogleMapApiProvider', function(GoogleMapApi) {
+        GoogleMapApi.configure({
+            key: 'AIzaSyBI2B2hZzmW7_NcuQww8GzopJyQrddOBHs',
+            libraries: 'weather, geometry, visualization'
+        })
     }])
-    // .config(['$locationProvider', '$routeProvider', 'uiGmapGoogleMapApiProvider', function($locationProvider, $routeProvider, uiGmapGoogleMapApiProvider) {
-    //     $locationProvider.hashPrefix('')
-    //     // uiGmapGoogleMapApiProvider.configure({
-    //     //         //    key: 'your api key',
-    //     //         v: '3.20', //defaults to latest 3.X anyhow
-    //     //         libraries: 'weather,geometry,visualization'
-    //     //     })
-    //         // $routeProvider.otherwise({redirectTo: '/'})
-    // }])
     .controller('ListCtrl', ['$route', '$routeParams', '$location', '$scope',
         function ListCtrl($route, $routeParams, $location, $scope) {
             this.$route = $route
@@ -32,8 +23,30 @@ angular.module('myApp', [
     ])
     // derick was here
     .controller('MapCtrl', ['$scope', 'uiGmapGoogleMapApi', function MapCtrl($scope, uiGmapGoogleMapApi) {
-        $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 }
+        $scope.mapOptions = {
+          styles: [{
+              stylers: [
+                  { hue: '#5fade7' },
+                  { visibility: 'simplified' },
+                  { gamma: 0.5 },
+                  { weight: 0.5 }
+              ]
+          }, {
+              elementType: 'labels',
+              stylers: [{ visibility: 'off' }]
+          }, {
+              featureType: 'water',
+              stylers: [{ color: '#5fade7' }]
+          }]
+        }
+        $scope.map = {
+            center: {
+                latitude: 42.403685,
+                longitude: -71.120482
+            },
+            zoom: 15
+        }
         uiGmapGoogleMapApi.then(function(maps) {
-          console.log(maps)
+            console.log(maps)
         })
     }])

@@ -76,8 +76,8 @@
             </ul>
         </div>
         <div id="map"></div>
-        <div class="map" ng-controller="MapCtrl">
-            <ui-gmap-google-map center="map.center" zoom="map.zoom" style="height: 400px; width: 400px;"></ui-gmap-google-map>
+        <div ng-controller="MapCtrl">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" options="mapOptions"></ui-gmap-google-map>
         </div>
     </div>
     <!-- In production use:
