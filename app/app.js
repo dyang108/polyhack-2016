@@ -37,7 +37,10 @@ angular.module('myApp', [
           }, {
               featureType: 'water',
               stylers: [{ color: '#5fade7' }]
-          }]
+          }],
+          mapTypeControl: false,
+          streetViewControl: false
+
         }
         $scope.map = {
             center: {
