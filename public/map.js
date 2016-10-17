@@ -1,6 +1,6 @@
 var map;
 var data = {};
-
+var itinArray = []; 
 $(function() {
   $('form').submit(function() {
     var data = {};
@@ -66,7 +66,9 @@ function initAutocomplete() {
     if (places.length == 0) {
       return;
     }
-
+    $("#recommendations").html(""); 
+    $("#itinerary").html(""); 
+    itinArray = []
     // Clear out the old markers.
     markers.forEach(function(marker) {
       marker.setMap(null);
@@ -218,6 +220,8 @@ function parseReturnData(xhr, type) {
   var text = JSON.parse(xhr);
   var data = text["data"];
   recommendations = $("#recommendation");
+  console.log('hi')
+  recommendations.html(""); 
   for (var i = 0; i < data.length; i++) {
     var address = data[i]["address_obj"];
     var str = address["address_string"];
@@ -386,7 +390,7 @@ function addMarkerToMap(lat, lng, type, business, description, name, address) {
 }
 
 
-var itinArray = []; 
+
 function addToMorning(name, address) {
   $('#modaltitle').text(name);
   $('#timeselect').modal();
